@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E7D9EA7-A4DB-446A-917D-628D0DDC35AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uxunit", "src\Uxunit\Uxunit.csproj", "{33B996C9-EDDD-4A27-B605-744AEAC7B9ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UxunitTest", "tests\UxunitTest.csproj", "{0EA08242-DFEF-4B3C-BA73-5079C7EAF96C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +16,18 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33B996C9-EDDD-4A27-B605-744AEAC7B9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B996C9-EDDD-4A27-B605-744AEAC7B9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B996C9-EDDD-4A27-B605-744AEAC7B9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B996C9-EDDD-4A27-B605-744AEAC7B9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA08242-DFEF-4B3C-BA73-5079C7EAF96C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA08242-DFEF-4B3C-BA73-5079C7EAF96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA08242-DFEF-4B3C-BA73-5079C7EAF96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA08242-DFEF-4B3C-BA73-5079C7EAF96C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{33B996C9-EDDD-4A27-B605-744AEAC7B9ED} = {2E7D9EA7-A4DB-446A-917D-628D0DDC35AC}
 	EndGlobalSection
 EndGlobal

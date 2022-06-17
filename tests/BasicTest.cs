@@ -4,8 +4,14 @@ using Xunit;
 public class BasicTest
 {
     [Fact]
-    public void BasicTest1()
+    public void Test1()
     {
         Assert.True(true);
+    }
+
+    [Fact]
+    public void Test2()
+    {
+
     }
 }
