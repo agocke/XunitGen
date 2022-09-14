@@ -52,43 +52,41 @@ public sealed class XUnitWrapperGenerator : IIncrementalGenerator
 namespace Uxunit;
 internal static class {{typeName}}UxunitTests
 {
-    public static readonly (string, Action<{{typeName}}>)[] TestMethods = new (string, Action<{{typeName}}>)[] {
+    public static readonly UnitTest[] TestMethods = new[] {
 {{ string.Join("," + Environment.NewLine,
-    methodNames.Select(s => $"(\"{s}\", ({typeName} t) => t.{s}())")) }}
+    methodNames.Select(s => $"""
+new UnitTest.Fact<BasicTest>("{s}", ({typeName} t) => t.{s}())
+"""))
+}}
     };
 
-    public static TestResult[] RunAllTests()
+    public static void RunAllTests(TestReporter results)
     {
-        var results = new TestResult[TestMethods.Length];
-        for (int i = 0; i < TestMethods.Length; i++)
+        foreach (var testMethod in TestMethods)
         {
-            var (name, a) = TestMethods[i];
-            try
-            {
-                var t = new {{typeName}}();
-                a(t);
-                results[i] = new TestResult.Succeeded(name);
-            }
-            catch (Exception e)
-            {
-                results[i] = new TestResult.Failed(name, e);
-            }
+            testMethod.RunTestCases(results);
         }
-        return results;
     }
 }
 """;
                 prodCtx.AddSource($"{typeName}Methods", uxunitTestStruct);
             }
+            var resultsStmts = testCollection.MethodsByType.Select(
+                item => $"{item.Key}UxunitTests.RunAllTests(reporter);").ToList();
             var testMgrType = $$"""
 namespace Uxunit;
 internal static class TestManager
 {
-    public static void RunAllTests()
+    public static TestReporter RunAllTests()
     {
-{{ string.Join(
-    Environment.NewLine,
-    testCollection.MethodsByType.Select(item => $"{item.Key}UxunitTests.RunAllTests();")) }}
+        var reporter = new TestReporter();
+        {{ string.Join(Environment.NewLine, resultsStmts) }}
+        return reporter;
+    }
+    public static void Main()
+    {
+        var reporter = RunAllTests();
+        reporter.PrintSummary();
     }
 }
 """;

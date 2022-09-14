@@ -1,8 +1,15 @@
 ﻿namespace Uxunit;
 internal static class TestManager
 {
-    public static void RunAllTests()
+    public static TestReporter RunAllTests()
     {
-BasicTestUxunitTests.RunAllTests();
+        var reporter = new TestReporter();
+        BasicTestUxunitTests.RunAllTests(reporter);
+        return reporter;
+    }
+    public static void Main()
+    {
+        var reporter = RunAllTests();
+        reporter.PrintSummary();
     }
 }
