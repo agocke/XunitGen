@@ -60,12 +60,14 @@ new UnitTest.Fact<BasicTest>("{s}", ({typeName} t) => t.{s}())
 }}
     };
 
-    public static void RunAllTests(TestReporter results)
+    public static void RunAllTests(TestReporter reporter)
     {
+        reporter.StartRun();
         foreach (var testMethod in TestMethods)
         {
-            testMethod.RunTestCases(results);
+            testMethod.RunTestCases(reporter);
         }
+        reporter.EndRun();
     }
 }
 """;

@@ -6,11 +6,13 @@ new UnitTest.Fact<BasicTest>("Test1", (BasicTest t) => t.Test1()),
 new UnitTest.Fact<BasicTest>("Test2", (BasicTest t) => t.Test2())
     };
 
-    public static void RunAllTests(TestReporter results)
+    public static void RunAllTests(TestReporter reporter)
     {
+        reporter.StartRun();
         foreach (var testMethod in TestMethods)
         {
-            testMethod.RunTestCases(results);
+            testMethod.RunTestCases(reporter);
         }
+        reporter.EndRun();
     }
 }

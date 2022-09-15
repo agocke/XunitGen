@@ -48,9 +48,13 @@ public sealed class TestReporter
         }
     }
 
-    public void PrintSummary()
+    public void EndRun()
     {
         _timer.Stop();
+    }
+
+    public void PrintSummary()
+    {
         string result = _failed != 0 ? "Failed!" : "Passed";
         Console.WriteLine($"{result} - Failed: {_failed}, Passed: {_passed}, Skipped: 0, Total: {_failed + _passed}, Duration: {_timer.ElapsedMilliseconds} ms");
     }
