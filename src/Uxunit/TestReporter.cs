@@ -6,16 +6,19 @@ using System.Linq;
 
 namespace Uxunit;
 
-public sealed class TestReporter
+public sealed partial class TestReporter
 {
     private int _passed = 0;
     private int _failed = 0;
+    private int _skipped = 0;
     private readonly Stopwatch _timer = new Stopwatch();
+    private DateTime? _started = null;
 
     public void StartRun()
     {
         Console.WriteLine("Starting test execution, please wait...");
         _timer.Start();
+        _started = DateTime.Now;
     }
 
     public void ReportResult(TestResult r)
@@ -55,6 +58,7 @@ public sealed class TestReporter
 
     public void PrintSummary()
     {
+        Console.WriteLine(GetXmlOutput());
         string result = _failed != 0 ? "Failed!" : "Passed";
         Console.WriteLine($"{result} - Failed: {_failed}, Passed: {_passed}, Skipped: 0, Total: {_failed + _passed}, Duration: {_timer.ElapsedMilliseconds} ms");
     }

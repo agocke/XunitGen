@@ -9,6 +9,8 @@
     <CompilerGeneratedFilesOutputPath>generated</CompilerGeneratedFilesOutputPath>
     <!-- Don't use the Microsoft.NET.Test.SDK generated entrypoint -->
     <GenerateProgramFile>false</GenerateProgramFile>
+    <LangVersion>preview</LangVersion>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="xunitxml.testlogger" Version="3.0.70" />
     <ProjectReference Include="../src/Uxunit/Uxunit.csproj" />
     <ProjectReference Include="../src/UxunitGenerator/UxunitGenerator.csproj" OutputItemType="Analyzer" />
     <PackageReference Include="xunit.core" Version="2.4.1" />

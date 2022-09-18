@@ -2,7 +2,7 @@ using System;
 
 namespace Uxunit;
 
-public abstract record TestResult
+public abstract partial record TestResult
 {
     public UnitTest Test { get; init; }
 
