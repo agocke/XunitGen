@@ -1,5 +1,5 @@
-﻿namespace Uxunit;
-internal static class BasicTestUxunitTests
+﻿namespace XunitGen;
+internal static class BasicTestXunitGenTests
 {
     public static readonly UnitTest[] TestMethods = new[] {
 new UnitTest.Fact<BasicTest>("Test1", (BasicTest t) => t.Test1()),

@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/artifacts/bin/UxunitTest/Debug/net7.0/UxunitTest.dll",
+            "program": "${workspaceFolder}/artifacts/bin/XunitGenTest/Debug/net7.0/XunitGenTest.dll",
             "args": [],
             "cwd": "${workspaceFolder}/tests",
             "console": "internalConsole",
